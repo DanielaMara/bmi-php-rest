@@ -4,7 +4,6 @@ require 'bmiService.php';
 
 $app = new \Slim\Slim();
 
-
 $app->get('/bmi/height/:height/weight/:weight', function($height, $weight) use ( $app ) {
     $bmiIndexResult = number_format(BMIService::getBmiIndex($weight, $height), 2);
     $bmiDescriptionResult = BMIService::getBmiDescription($bmiIndexResult);
