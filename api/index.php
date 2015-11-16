@@ -1,12 +1,30 @@
 <?php
 require 'vendor/autoload.php';
+require 'bmiService.php';
 
 $app = new \Slim\Slim();
 
-// http://hostname/api/
-$app->get('/', function() use ( $app ) {
-    echo "Welcome to Task REST API";
+
+$app->get('/bmi/height/:height/weight/:weight', function($height, $weight) use ( $app ) {
+    $bmiIndexResult = number_format(BMIService::getBmiIndex($weight, $height), 2);
+    $bmiDescriptionResult = BMIService::getBmiDescription($bmiIndexResult);
+    $result = array('bmiIndex'=>$bmiIndexResult,'description'=>$bmiDescriptionResult);
+    
+    $app->response()->header('Content-Type','application/json');
+    echo json_encode($result);
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 // http://domain.address/api/tasks
 // get all tasks
