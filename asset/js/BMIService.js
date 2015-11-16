@@ -1,21 +1,18 @@
-var BMIService = {
-
-	getIndex: function(weight, height, callback) {
+var BMIService = 
+{
+	getBmiResult: function(weight, height, callback) {
+		debugger;
 		$.ajax({
-		  url: 'services/bmi.action.php',
-		  data: {'weight': weight, 'height': height},
+		  type: 'GET',
+		  url: 'https://bmi-php-rest-danielamara.c9users.io/api/bmi/height/' + height + '/weight/' + weight,
+		  data : {'height': height, 'weight': weight},
+		  dataType: 'json',
 		  success: function(result) {
-		  	callback(parseFloat(result));
+		  	callback(result);
 		  },
 		  error: function() {
 		  	callback(null);
 		  }
 		});
-	},
-	
-	getDescription: function (index) {
-		//TODO to be implemented
-		return "";
 	}
-	
 };

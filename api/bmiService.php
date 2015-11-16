@@ -20,7 +20,7 @@
             else if($bmiIndex > 35 && $bmiIndex < 39.99)
                 return 'Obesidade II(Severa) :((';
             else if($bmiIndex > 40)
-                return 'Obesidade III(Morbida) :(((';
+                return 'Obesidade III(Mórbida) :(((';
             else        
     		    return "";   
         }

@@ -9,7 +9,7 @@ $app->get('/bmi/height/:height/weight/:weight', function($height, $weight) use (
     $bmiDescriptionResult = BMIService::getBmiDescription($bmiIndexResult);
     $result = array('bmiIndex'=>$bmiIndexResult,'description'=>$bmiDescriptionResult);
     
-    $app->response()->header('Content-Type','application/json');
+    $app->response()->header('Content-Type','application/json; charset=UTF-8');
     echo json_encode($result);
 });
 

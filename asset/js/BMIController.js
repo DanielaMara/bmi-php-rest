@@ -8,7 +8,6 @@ var BMIController = {
 		var form = document.querySelector('form');
 		form.addEventListener('submit', function(event) {
 			BMIController.calculateBMI(form);
-			//it is necessary to avoid form submition
 			event.preventDefault();
 		});
 	},
@@ -20,23 +19,26 @@ var BMIController = {
 			result = 0;
 		
 		var callback = function(result) {
+			debugger;
 			BMIController.showResult(result);			
 		};
 		
 		BMIController.showLoading(true);
-		BMIService.getIndex(weight, height, callback);
+		BMIService.getBmiResult(weight, height, callback);
 	},
 	
 	showResult: function(result) {
+		debugger;
 		var spanResult = document.querySelector('.result');
-		spanResult.innerHTML = result.toFixed(2);
+		var spanDescrition = document.querySelector('.description');
+		spanResult.innerHTML = parseFloat(result.bmiIndex).toFixed(2);
+		spanDescrition.innerHTML = result.description;
 		BMIController.showLoading(false);
 	},
 	
 	showLoading: function(isLoading) {
 		document.querySelector('.label').innerHTML = isLoading ? 'loading...' : 'BMI Result'
 	}
-
 };
 
 //initialization
